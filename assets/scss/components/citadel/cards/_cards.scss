@@ -80,18 +80,22 @@
 
 .card-title {
     color: #54565B;
-    font-size: 14px; // $card-title-fontSize;
+    font-size: 16px; // $card-title-fontSize;
     font-weight: 500;
     margin: $card-title-margin;
     text-align: center;
-
-    @include breakpoint("medium") {
-      font-size: 20px; // $card-title-fontSize;
-    }
-
+    line-height: 1.2em;
     @include breakpoint("small") {
       font-size: 16px; // $card-title-fontSize;
     }
+
+    @include breakpoint("medium") {
+      font-size: 18px; // $card-title-fontSize;
+    }
+    @include breakpoint("large") {
+      font-size: 20px; // $card-title-fontSize;
+    }
+
 
 
     > a {
