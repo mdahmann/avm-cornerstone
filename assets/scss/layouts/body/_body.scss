@@ -508,6 +508,16 @@
 }
 
 .brandsslider {margin-bottom:0px;}
+.brandsslider .slick-prev {
+  left: -25px;
+}
+.brandsslider .slick-next {
+  right: -25px;
+}
+.brandsslider .slick-prev,
+.brandsslider .slick-next {
+  opacity: .5;
+}
 // .brand-slider-wrapper {
 //   display: inline-flex;
 //   left: 10%;
