@@ -47,50 +47,52 @@
         </script>
 
         <script>
-        $(document).ready(function() {
-        	//HOME - brand slider
-          var iSlidesWidth = 2 * $('.brand-nav-left').outerWidth();
-          $('.brand-slide').each(function() {
-        	  iSlidesWidth += $(this).outerWidth();
-          });
-          $('.brand-slide-wrapper').css({'width': iSlidesWidth+'px'});
+        // $(document).ready(function() {
+        // 	//HOME - brand slider
+        //   var iSlidesWidth = 2 * $('.brand-nav-left').outerWidth();
+        //   $('.brand-slide').each(function() {
+        // 	  iSlidesWidth += $(this).outerWidth();
+        //   });
+        //   $('.brand-slide-wrapper').css({'width': iSlidesWidth+'px'});
+        //
+        //   $('.brand-nav-right').click(function() {
+        // 	  moveLeft = function () {
+        //       var position = $('.brand-slider').position();
+        //       var moveBy = $('.brand-slider').width() - (1 * $('.brand-nav-left').width());
+        //       var slideWrapperWidth = $('.brand-slide-wrapper').width() - $('.brand-nav-left').width();
+        //       var maxMove = slideWrapperWidth - moveBy;
+        //       var currLeft = parseInt($('.brand-slide-wrapper').css('left')) * (-1);
+        //       var newMoveBy = currLeft + moveBy;
+        //       if (newMoveBy > maxMove) {
+        //         newMoveBy = maxMove;
+        //       }
+        //       if (currLeft >= maxMove ) {
+        //     	  newMoveBy = 0;
+        //       }
+        //       $('.brand-slide-wrapper').animate({'left': -newMoveBy+'px'});
+        //     };
+        //     moveLeft();
+        //   });
+        //   $('.brand-nav-left').click(function() {
+        //     moveRight = function () {
+        //       var position = $('.brand-slider').position();
+        //       var moveBy = $('.brand-slider').width() - (1 * $('.brand-nav-left').width());
+        //       var slideWrapperWidth = $('.brand-slide-wrapper').width() - 1 * $('.brand-nav-left').width();
+        //       var maxMove = slideWrapperWidth - moveBy;
+        //       var currLeft = parseInt($('.brand-slide-wrapper').css('left')); // * (-1);
+        //       var newMoveBy = currLeft + moveBy;
+        //       if (newMoveBy > 0) {
+        //         newMoveBy = 0;
+        //       }
+        //       if (currLeft == 0) {
+        //         newMoveBy = -maxMove;
+        //       }
+        //       $('.brand-slide-wrapper').animate({'left': newMoveBy+'px'});
+        //     };
+        //     moveRight();
+        //   });
 
-          $('.brand-nav-right').click(function() {
-        	  moveLeft = function () {
-              var position = $('.brand-slider').position();
-              var moveBy = $('.brand-slider').width() - (1 * $('.brand-nav-left').width());
-              var slideWrapperWidth = $('.brand-slide-wrapper').width() - $('.brand-nav-left').width();
-              var maxMove = slideWrapperWidth - moveBy;
-              var currLeft = parseInt($('.brand-slide-wrapper').css('left')) * (-1);
-              var newMoveBy = currLeft + moveBy;
-              if (newMoveBy > maxMove) {
-                newMoveBy = maxMove;
-              }
-              if (currLeft >= maxMove ) {
-            	  newMoveBy = 0;
-              }
-              $('.brand-slide-wrapper').animate({'left': -newMoveBy+'px'});
-            };
-            moveLeft();
-          });
-          $('.brand-nav-left').click(function() {
-            moveRight = function () {
-              var position = $('.brand-slider').position();
-              var moveBy = $('.brand-slider').width() - (1 * $('.brand-nav-left').width());
-              var slideWrapperWidth = $('.brand-slide-wrapper').width() - 1 * $('.brand-nav-left').width();
-              var maxMove = slideWrapperWidth - moveBy;
-              var currLeft = parseInt($('.brand-slide-wrapper').css('left')); // * (-1);
-              var newMoveBy = currLeft + moveBy;
-              if (newMoveBy > 0) {
-                newMoveBy = 0;
-              }
-              if (currLeft == 0) {
-                newMoveBy = -maxMove;
-              }
-              $('.brand-slide-wrapper').animate({'left': newMoveBy+'px'});
-            };
-            moveRight();
-          });
+        
 
           //HOME - video playlist
           var videoW = $('#h1').width();
@@ -266,7 +268,7 @@
 
         });
         </script>
-                    
+
         <!-- begin olark code -->
         <script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
         f[z]=function(){
@@ -287,7 +289,7 @@
         /* custom configuration goes here (www.olark.com/documentation) */
         olark.identify('8065-524-10-6754');/*]]>*/</script><noscript><a href="https://www.olark.com/site/8065-524-10-6754/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
         <!-- end olark code -->
- 
+
         {{{footer.scripts}}}
         {{{snippet 'footer'}}}
     </body>
