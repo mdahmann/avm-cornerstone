@@ -1,0 +1,113 @@
+// =============================================================================
+// TABS (CSS)
+// =============================================================================
+//
+// Most of these styles deliberately reset Citadel's defaults for smaller
+// screens since the styles in Stencil for smaller screens are more persistent
+// across breakpoints.
+//
+// -----------------------------------------------------------------------------
+
+.tab {
+//    border-top: $tab-active-border;
+    float: none;
+
+    @include breakpoint("medium") {
+ //       border-top-color: $tab-title-border-color;
+        float: left;
+    }
+
+    &.is-active {
+        border-left-color: $tab-title-border-color;
+        border-right-color: $tab-title-border-color;
+
+        .tab-title {
+            color: #115740;
+            font-family: 'League Gothic', sans-serif;
+            font-size: 34px;
+            font-weight: 500;
+        }
+
+        @include breakpoint("small") {
+            margin-bottom: $tab-title-border-bottom-offset;
+        }
+
+        @include breakpoint("medium") {
+//            border: $tab-active-border;
+//            border-bottom: $tab-title-border;
+        }
+    }
+}
+
+.tab-title {
+    color: #115740;
+    font-family: 'League Gothic', sans-serif;
+    font-size: 34px;
+    font-weight: 500;
+    padding: spacing("half") + spacing("quarter") 0;
+    text-align: center;
+    text-decoration: $tab-title-text-decoration;
+
+    @include breakpoint("small") {
+        text-align: left;
+    }
+
+    @include breakpoint("medium") {
+        padding: spacing("half") 0; // spacing("half") spacing("single");
+    }
+}
+
+
+.tab-content {
+  display: block;
+  font-size: 18px;
+  line-height: 32px;
+}
+
+.tabs-contents {
+  #FAQ {
+    display: none;
+  }
+}
+
+#video-wrapper {
+  float: right;
+  padding-left: 25px;
+  width: 45%;
+  
+  section.toggle {
+    border: none;
+    h4 {
+      display: none;
+    }
+  }
+}
+
+.tabs {
+  border-bottom: 2px solid #c8c8c8;
+}
+
+
+
+//
+// State for when tab-content has js generated of calculated content, like carousel
+//
+// Purpose: The content being display: none, means any js calculated dimensions
+// are incorrect as the elements inside the tab-content have no dimensions to grab.
+// Carousel is a prime example. It needs widths to calculate the layout and slides
+// -----------------------------------------------------------------------------
+
+.tab-content.has-jsContent {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    visibility: hidden;
+
+    &.is-active {
+        height: auto;
+        overflow: visible;
+        padding: $tabs-content-padding;
+        visibility: visible;
+    }
+}

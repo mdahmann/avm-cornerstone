@@ -1,0 +1,56 @@
+{{#if banners.top}}
+<div class="banners" data-banner-location="top">
+    <div class="banner">
+        {{{limit banners.top 1}}}
+    </div>
+</div>
+{{/if}}
+<header class="header" role="banner">
+    <div class="header-promo"><a href="{{lang 'header.promo_url'}}">{{lang 'header.promo_rotational' }}</a></div>
+
+    <div class="header-wrapper">
+      <div class="store-logo">    
+        {{#if template_file '===' 'pages/home'}}
+          <h1 class="header-logo header-logo--{{theme_settings.logo-position}}">
+            {{> components/common/store-logo}}
+          </h1>
+        {{else}}
+          <div class="header-logo header-logo--{{theme_settings.logo-position}}">
+            {{> components/common/store-logo}}
+          </div>
+        {{/if}}
+      </div>
+
+      <div class="header-center">
+        <div>
+          {{> components/common/navigation}}
+        </div>
+        <div class="navPages-container" id="menu" data-menu>
+          {{> components/common/navigation-menu}}
+        </div>
+
+      </div>
+
+
+
+      <div class="store-cart">
+        <div class="btn-cart">
+          <a
+            class="navUser-action"
+            data-cart-preview
+            data-dropdown="cart-preview-dropdown"
+            data-options="align:right"
+            href="{{urls.cart}}">
+            <span class="navUser-item-cartLabel"><img src="{{cdn '/assets/img/cart-icon.svg'}}" width="20" height="20" class="not-mobile" /><i class="fa fa-shopping-cart fa-flip-horizontal on-mobile" aria-hidden="true"></i><span class="navUser-item-cartLabel-text">&nbsp;&nbsp;&nbsp;{{lang 'common.cart'}}</span></span> <span class="countPill{{#if cart.items}} countPill--positive{{/if}} cart-quantity">({{cart.quantity}})</span>
+          </a>
+
+          <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+
+    <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
+        <span class="mobileMenu-toggleIcon">Toggle menu</span>
+    </a>
+
+</header>

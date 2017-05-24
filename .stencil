@@ -1,0 +1,12 @@
+{
+  "normalStoreUrl": "http://www.avidmax.com",
+  "port": 3000,
+  "username": "Miles",
+  "token": "241850b3a920799f40535065ba2ae9db0cb529da",
+  "customLayouts": {
+    "brand": {},
+    "category": {},
+    "page": {},
+    "product": {}
+  }
+}

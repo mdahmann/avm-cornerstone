@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="1743 2969 74 74">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #babc18;
+        opacity: 0.497;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 10px;
+      }
+    </style>
+  </defs>
+  <g id="to_top_button" data-name="to top button" transform="translate(0 582)">
+    <circle id="Ellipse_6" data-name="Ellipse 6" class="cls-1" cx="37" cy="37" r="37" transform="translate(1743 2387)"/>
+    <path id="Path_92" data-name="Path 92" class="cls-2" d="M-85.8,894.31l-15.8-15.331s11.169-12.183,15.8-16.972" transform="translate(2658.459 2517.363) rotate(90)"/>
+  </g>
+</svg>

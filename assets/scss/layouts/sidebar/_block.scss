@@ -1,0 +1,24 @@
+// =============================================================================
+// SIDEBAR BLOCKS (CSS)
+// =============================================================================
+
+
+// Block
+// -----------------------------------------------------------------------------
+
+.sidebarBlock {
+
+    + .sidebarBlock {
+        border-top: 1px solid #95989a;  //container("border");
+        margin-top: spacing("single") + spacing("third");
+        padding-top: spacing("single") + spacing("third");
+    }
+}
+
+.sidebarBlock-heading {
+    color: #115740;
+    font-family: 'League Gothic', sans-serif;
+    font-size: 28px;
+    margin-top: 0;
+    text-transform: inherit;
+}

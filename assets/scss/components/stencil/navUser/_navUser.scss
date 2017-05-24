@@ -1,0 +1,427 @@
+// =============================================================================
+// USER NAVIGATION (CSS)
+// =============================================================================
+//
+// 1. Corrects the spacing added by .navUser-or
+// 2. Can't use top: 50% because its container `.header` changes its height to
+//    100% when mobile menu is expanded
+// 3. Make the triangle for dropdown centered
+// 4. Needs to be 100% so its dropdown can take full width in mobile viewport
+// 5. Needs to be lower than logo zIndex, otherwise, logo is not clickable
+//
+// -----------------------------------------------------------------------------
+
+.navUser {
+    @include nav($style: "navBar", $wrapper: "nav");
+    @include verticalPositionMiddle("absolute");
+    right: 0;
+    top: 26px; // 2
+    width: 100%; // 4
+    z-index: zIndex("lowest"); // 5.
+    
+    .navUser-section {
+      width: 100%;
+    }
+
+    @include breakpoint("medium") {
+        //padding: 0 spacing("single");
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        z-index: zIndex("high");
+    }
+
+    .dropdown-menu {
+        background-color: stencilColor("navUser-dropdown-backgroundColor");
+        border: 1px solid stencilColor("navUser-dropdown-borderColor");
+        box-shadow: container("dropShadow");
+        position: absolute;
+
+        // scss-lint:disable NestingDepth
+        &.is-open {
+            &:before {
+                @include css-triangle(
+                    $triangle-direction: "bottom",
+                    $triangle-size: 10px,
+                    $triangle-color: stencilColor("navUser-dropdown-borderColor")
+                );
+                bottom: 100%;
+                left: spacing("half");
+                position: absolute;
+            }
+
+            &:after {
+                @include css-triangle(
+                    $triangle-direction: "bottom",
+                    $triangle-size: 8px,
+                    $triangle-color: stencilColor("navUser-dropdown-backgroundColor")
+                );
+                bottom: 100%;
+                left: spacing("half") + remCalc(2px);
+                position: absolute;
+            }
+        }
+    }
+}
+
+.navUser-action {
+    color: stencilColor("navUser-color");
+    font-weight: fontWeight("medium");
+    padding: spacing("base") 0 0; //spacing("base") spacing("half");
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover,
+    &.is-open {
+        color: stencilColor("navUser-color-hover");
+
+        // scss-lint:disable NestingDepth
+        svg {
+            fill: stencilColor("navUser-color-hover");
+            stroke: stencilColor("navUser-color-hover");
+        }
+        // scss-lint:enable NestingDepth
+    }
+
+    .icon {
+        @include square(8px);
+        margin: -1px 0 0 spacing("eighth");
+    }
+
+    svg {
+        fill: stencilColor("navUser-color");
+        stroke: stencilColor("navUser-color");
+        transition: all 0.15s ease;
+    }
+}
+
+.navUser-action--storeCredit + .dropdown-menu {
+    max-width: remCalc(300px);
+    padding: spacing("single");
+
+    &:before {
+        // scss-lint:disable ImportantRule
+        left: remCalc(140px) !important; // 3
+    }
+
+    &:after {
+        // scss-lint:disable ImportantRule
+        left: remCalc(142px) !important; // 3
+    }
+}
+
+.navUser-action-divider {
+    border-right: container("border");
+    color: stencilColor("color-textSecondary");
+    display: inline-block;
+    padding: 0 remCalc(20) 0 0;
+    text-decoration: none;
+}
+
+.navUser-item {
+    color: #54565b;
+    display: none;
+    font-size: 16px;
+    font-weight: 500;
+    
+/* ++ Intergonic */
+    .search-wrap {
+      width: 360px;
+      @media all and (min-width: 801px) {
+        width: 270px;
+      }
+      @media all and (min-width: 961px) {
+        width: 360px;
+      }
+      
+      @include breakpoint("large") {
+          width: 450px;
+      }
+
+      
+      .search-form {
+        .search-input {
+          background-color: #ecedef;
+        }
+
+        ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+          color: #54565b;
+        }
+        :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          color: #54565b;
+          opacity: 1;
+        }
+        ::-moz-placeholder { /* Mozilla Firefox 19+ */
+          color: #54565b;
+          opacity: 1;
+        }
+        :-ms-input-placeholder { /* Internet Explorer 10-11 */
+          color: #54565b;
+        }
+
+      }
+    }
+/* -- Intergonic */
+
+    @include breakpoint("medium") {
+        display: block;
+
+        &.navUser-item--social {
+            margin-top: rem-calc(5px);
+            padding-right: rem-calc(5px);
+        }
+
+        &.navUser-item--divider {
+            font-size: rem-calc(25px);
+            margin-top: rem-calc(8px);
+            padding-left: rem-calc(2px);
+        }
+    }
+}
+
+.navUser-item--cart {
+    display: block;
+
+    .navUser-action {
+        color: stencilColor("navUser-color");
+
+        // scss-lint:disable NestingDepth
+        &:hover,
+        &.is-open {
+            color: stencilColor("navUser-color-hover");
+        }
+    }
+
+    .dropdown-menu {
+        max-width: remCalc(320px);
+
+        // scss-lint:disable NestingDepth
+        &.is-open {
+            &:before,
+            &:after {
+                left: auto;
+            }
+
+            &:before {
+                right: spacing("half");
+            }
+
+            &:after {
+                right: spacing("half") + remCalc(2px);
+            }
+        }
+    }
+}
+
+.navUser-item-cartLabel {
+    display: inline;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    
+    img {
+        padding-bottom: 5px;
+    }
+    
+    .navUser-item-cartLabel-text {
+      display: none;
+      @include breakpoint("small") {
+        display: inline;
+      }
+    }
+
+    @include breakpoint("small") {
+        display: inline;
+    }
+}
+
+.navUser-item--compare {
+    display: none;
+
+    &.show {
+        display: block;
+    }
+}
+
+.navUser-item--account {
+
+    position: relative;
+//    transition-duration: 1s;
+//    -webkit-transition-property: width, height; /* Safari */
+//    transition-property: all;
+//    transition-timing-function: linear;
+
+    a.navUser-action {
+      border-bottom: 2px solid #ffffff;
+      &:hover {
+        border-bottom: 2px solid #54565b;
+      }
+    }
+
+    div.ulw {
+      padding-top: 25px;
+    }
+
+    > div.ulw > ul {
+      display: none;
+      font-weight: 300;
+      position: absolute;
+      
+//    transition: all 0.5s ease 3s;
+    }
+    
+    &:hover {
+//    transition: all 0.5s ease 2s;
+      > div.ulw > ul {
+        background-color: #ffffff;
+        border: 3px solid #ecedef;
+        display: block;
+        right: -50px;
+        top: 60px; // 40px;
+        width: 175px;
+
+//    transition: all 0.5s ease 2s;
+        
+        li {
+          padding: 5px 25px;
+          &.separator {
+            border: 1px solid #ecedef;
+            height: 0;
+            margin: 7px 25px;
+            padding: 0 15px;
+          }
+          a {
+            padding: 0;
+            text-decoration: none;
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .navUser-or {
+        // scss-lint:disable NestingDepth
+        + .navUser-action {
+            margin-right: -0.5rem; // 1
+        }
+    }
+
+    .navUser-action {
+        display: inline-block;
+    }
+}
+
+.navUser-or {
+    color: stencilColor("navUser-color");
+    cursor: default;
+    display: inline-block;
+    margin: 0 remCalc(-12px);
+    padding: 0 2px;
+    position: relative;
+    z-index: 1;
+}
+
+// Quick search
+// -----------------------------------------------------------------------------
+//
+// 1. Overriding the inline styles from Foundation as this is a unique dropdown.
+//
+// -----------------------------------------------------------------------------
+
+.navUser-action--quickSearch {
+
+    &.is-open {
+        position: relative;
+
+        // scss-lint:disable NestingDepth
+        &:before {
+            @include css-triangle(
+                $triangle-direction: "bottom",
+                $triangle-size: 10px,
+                $triangle-color: color("greys", "lightest")
+            );
+            bottom: 0;
+            left: 50%;
+            position: absolute;
+            transform: translateX(-50%);
+        }
+    }
+}
+
+.dropdown--quickSearch {
+    background-color: $dropdown--quickSearch-backgroundColor;
+    padding: spacing("single") 0;
+
+    @include breakpoint("small") {
+        padding: spacing("double");
+    }
+
+    &.is-open {
+        // scss-lint:disable ImportantRule
+        left: 0 !important; // 1
+        outline: none;
+        right: 0 !important; // 1
+        width: 100% !important;
+        z-index: zIndex("high");
+    }
+
+    .form {
+        margin: auto;
+        max-width: 30rem;
+    }
+
+    .form,
+    .form-field {
+        margin-bottom: 0;
+    }
+
+    .form-input {
+        font-size: fontSize("small");
+        height: unset;
+    }
+
+    .productGrid {
+        padding: spacing("single") 0 0;
+
+        @include breakpoint("small") {
+            padding: spacing("double") 0 0;
+        }
+    }
+}
+
+// Counter Pill
+// -----------------------------------------------------------------------------
+//
+// 1. Hardcoded intentionally for precise pixels.
+//
+// -----------------------------------------------------------------------------
+
+.countPill {
+    background-color: color("whites", "bright");
+    border-radius: 50%;
+    color: #babc18;
+    display: none;
+    font-size: 22px;  // fontSize("tiny");
+    font-weight: fontWeight("bold");
+    height: 24px; // 1
+    letter-spacing: 2px;
+    line-height: 24px; // 1
+    margin-left: spacing("eighth");
+    text-align: center;
+    width: 20px; // 1
+    
+    @include breakpoint("small") {
+      background-color: #babc18;  // stencilColor("navUser-indicator-backgroundColor");
+      color: color("whites", "bright");
+    }
+}
+
+.countPill--positive {
+    display: inline-block;
+}
+
+.countPill--alt {
+    background-color: color("greys", "lighter");
+    color: color("greys", "darker");
+}

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="no-js" lang="{{ locale_name }}">
+    <head>
+        <title>{{ head.title }}</title>
+        {{{ head.meta_tags }}}
+        {{{ head.config }}}
+        {{#block "head"}} {{/block}}
+        <link href="{{ head.favicon }}" rel="shortcut icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        {{{stylesheet '/assets/css/theme.css'}}}
+        {{ getFontsCollection }}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="{{cdn 'assets/modernizr-custom.js'}}"></script>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+<!--
+<link rel="stylesheet" href="http://cdn5.bigcommerce.com/s-y8p1d/templates/__custom/Styles/tagtray.css?t=1492203989">
+<link rel="stylesheet" href="http://cdn5.bigcommerce.com/s-y8p1d/templates/__custom/Styles/tagtrayresponsive.css?t=1492203989">
+<script src="http://cdn5.bigcommerce.com/s-y8p1d/templates/__custom/js/tagtray.js?t=1492203989"></script>
+ -->
+<script src="//api.tagtray.com/v3/tagtray.js" ></script>
+        {{{head.scripts}}}
+        {{{head.rsslinks}}}
+
+        {{inject 'themeSettings' theme_settings}}
+        {{inject 'genericError' (lang 'common.generic_error')}}
+        {{inject 'maintenanceMode' settings.maintenance}}
+        {{inject 'urls' urls}}
+        {{{snippet 'htmlhead'}}}
+    </head>
+    <body>
+        {{{snippet 'header'}}}
+        <div class="icons-svg-sprite">{{> components/common/icons/icon-defs }}</div>
+
+        {{#if settings.privacy_cookie}}
+            {{> components/common/cookie}}
+        {{/if}}
+
+        {{> components/common/header }}
+        {{> components/common/body }}
+        {{> components/common/footer }}
+
+        <script src="{{cdn 'assets/dist/theme-bundle.js'}}"></script>
+        <script>
+            // Exported in app.js
+            window.stencilBootstrap("{{template_file}}", {{jsContext}}).load();
+        </script>
+
+        <script>
+        $(document).ready(function() {
+        	//HOME - brand slider
+          var iSlidesWidth = 2 * $('.brand-nav-left').outerWidth();
+          $('.brand-slide').each(function() {
+        	  iSlidesWidth += $(this).outerWidth();
+          });
+          $('.brand-slide-wrapper').css({'width': iSlidesWidth+'px'});
+
+          $('.brand-nav-right').click(function() {
+        	  moveLeft = function () {
+              var position = $('.brand-slider').position();
+              var moveBy = $('.brand-slider').width() - (1 * $('.brand-nav-left').width());
+              var slideWrapperWidth = $('.brand-slide-wrapper').width() - $('.brand-nav-left').width();
+              var maxMove = slideWrapperWidth - moveBy;
+              var currLeft = parseInt($('.brand-slide-wrapper').css('left')) * (-1);
+              var newMoveBy = currLeft + moveBy;
+              if (newMoveBy > maxMove) {
+                newMoveBy = maxMove;
+              }
+              if (currLeft >= maxMove ) {
+            	  newMoveBy = 0;
+              }
+              $('.brand-slide-wrapper').animate({'left': -newMoveBy+'px'});
+            };
+            moveLeft();
+          });
+          $('.brand-nav-left').click(function() {
+            moveRight = function () {
+              var position = $('.brand-slider').position();
+              var moveBy = $('.brand-slider').width() - (1 * $('.brand-nav-left').width());
+              var slideWrapperWidth = $('.brand-slide-wrapper').width() - 1 * $('.brand-nav-left').width();
+              var maxMove = slideWrapperWidth - moveBy;
+              var currLeft = parseInt($('.brand-slide-wrapper').css('left')); // * (-1);
+              var newMoveBy = currLeft + moveBy;
+              if (newMoveBy > 0) {
+                newMoveBy = 0;
+              }
+              if (currLeft == 0) {
+                newMoveBy = -maxMove;
+              }
+              $('.brand-slide-wrapper').animate({'left': newMoveBy+'px'});
+            };
+            moveRight();
+          });
+
+          //HOME - video playlist
+          var videoW = $('#h1').width();
+          var videoH = $('#h1').height();
+          if (videoW / videoH > 1.77) {
+        	  //set height
+        	  $('.playlist').css({'height': videoH+'px', 'width': videoH*1.77+'px'});
+          }
+          else {
+        	  //set width
+        	  $('.playlist').css({'height': videoW/1.77+'px', 'width': videoW+'px'})
+          }
+          $('.video-play').click(function() {
+        	  $('.playlist')[0].src += "&autoplay=1&rel=0";
+            $('.playlist').show();
+            $('#h1').css('background', '#000000');
+          });
+
+          //HOME - AvidMax Reviews Video
+          var videoW2 = $('#q4').width();
+          var videoH2 = $('#q4').height();
+          if (videoW2 / videoH2 > 1.77) {
+            //set height
+            $('.q4video').css({'height': videoH2+'px', 'width': videoH2*1.77+'px'});
+          }
+          else {
+            //set width
+            $('.q4video').css({'height': videoW2/1.77+'px', 'width': (videoW2 - 2)+'px'})
+          }
+          $('#q4').click(function() {
+            $('.q4video')[0].src += "?autoplay=1&modestbranding=1&rel=0";
+            $('.q4video').show();
+            $('#q4').css('background', '#000000');
+          });
+
+
+          //HEADER - limit menu list
+          $('li.navPages-item:gt(6)').hide();
+          $("ul.navPages-list:first").append('<li class="navPages-item""><a class="navPages-action" href="/brands/">Shop By Brand</a></li>');
+
+          //HEADER - menu hover
+          $('li.navPages-item').hover(function() {
+        	  $('.navPage-subMenu').hide();
+        	  $(this).children('.navPage-subMenu').show();
+          }, function(){
+        	  $(this).children('.navPage-subMenu').hide();
+          });
+
+          // not active because of mobile; only activate if viewport larger than 800px
+          if ($(window).width() > 800) {
+            $('.navPages-action.has-subMenu').click(function() {
+        	    var url = $(this).attr('href');
+        	    window.open(url, "_self");
+            });
+          }
+
+          //PRODUCT - video placment
+          if ($('section.videoGallery').length) {
+        	  $('section.videoGallery').appendTo('#video-wrapper');
+        	  $('section.videoGallery iframe').attr( "src", function( i, val ) {
+        		  return val + "?rel=0";
+        	  });
+          }
+          //PRODUCT - sale price
+          if ($('.price--rrp').length) {
+        	  $('.price--rrp').each(function() {
+        		  $(this).siblings('.price--withoutTax').addClass('sale-price');
+        		  $(this).next('.price--withoutTax').addClass('sale-price');
+        		  //$('.price--withoutTax').addClass('sale-price');
+        	  });
+          }
+
+          //No Tagtray on other pages besides home page
+          if ($('.section-home').length == 0) {
+        	  $('.tagtray').hide();
+          }
+
+          //TagTray no more than 4 images
+          $('.tagtray-gallery-items:gt(4)').hide()
+
+          //Chat online
+          $('#chat-online').click(function(){
+        	  $('button.olark-launch-button').click();
+          });
+
+          //Back to Top
+          $( window ).scroll(function() {
+        	  var s = $(window).scrollTop();
+        	  if (s > 700) {
+        		  $('.back-to-top').show();
+        	  }
+        	  else {
+        		  $('.back-to-top').hide();
+        	  }
+          });
+
+          //360
+/*
+          function show360image(Has360) {
+            if (Has360) {
+              $('#three-sixty-frame').attr("src", $('#three-sixty-frame').attr("src") + Has360 + ".html");
+              $('#three-sixty-button').show();
+            }
+          }
+          if ($("#threesixty").length) {
+            var f1               = $("#threesixty");
+            var jsonObj          = $.parseJSON(f1.html());
+            if (jsonObj && jsonObj.attributes) {
+              $.each(jsonObj.attributes, function(key, value) {
+                if (key == 'Has360') {
+                  if ($('#video-popup-overlay-button').is(":visible")) {
+                    $('#video-popup-overlay-button').css("right","60px");
+                  }
+                  show360image(value);
+                }
+              });
+            }
+          }
+*/
+          //ABOUT - Values
+          $('.message-holder:gt(0)').hide();
+          $('.values-next').click(function() {
+        	  $('.message-holder:first').appendTo('.values-carousel');
+        	  $('.message-holder:gt(0)').hide();
+        	  $('.message-holder:first').fadeIn();
+          });
+          $('.values-prev').click(function() {
+            $('.message-holder:last').prependTo('.values-carousel');
+            $('.message-holder:gt(0)').hide();
+            $('.message-holder:first').fadeIn();
+          });
+
+          //ABOUT - Openings
+          $('.openings-details:gt(0)').hide();
+          $('.openings-title').click(function() {
+        	  $(this).next('.openings-details').toggle();
+          });
+
+          //HEADER - Increase menu width
+          if ($(window).width() > 800) {
+        	  var newWidth = $(window).width() - $('.store-logo').width() - 25;
+            $('.navPages-list:first').width(newWidth);
+          }
+
+          if ($(window).width() <= 800) {
+        	  $('.navPages-quickSearch').appendTo('.header');
+        	  $('.navPages-quickSearch').addClass('mobile-search');
+          }
+
+          //ABOUT images
+          $('.member-profile .read-more').click(function() {
+        	  $(this).siblings('.member-profile-details').toggle();
+          });
+
+
+
+
+
+        });
+
+        $(window).load(function() {
+          //TAGTRAY - fix Facebook pictures
+          $('.tagtray-gallery-item > a > img').each(function() {
+            if ($(this).height() > $(this).width()) {
+              $(this).height($(this).width());
+            }
+          });
+
+          //CATEGORY - close filters by default
+          $('.accordion-navigation.toggleLink.is-open').each(function() {
+            $(this).click();
+          });
+
+        });
+        </script>
+                    
+        <!-- begin olark code -->
+        <script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
+        f[z]=function(){
+        (a.s=a.s||[]).push(arguments)};var a=f[z]._={
+        },q=c.methods.length;while(q--){(function(n){f[z][n]=function(){
+        f[z]("call",n,arguments)}})(c.methods[q])}a.l=c.loader;a.i=nt;a.p={
+        0:+new Date};a.P=function(u){
+        a.p[u]=new Date-a.p[0]};function s(){
+        a.P(r);f[z](r)}f.addEventListener?f.addEventListener(r,s,false):f.attachEvent("on"+r,s);var ld=function(){function p(hd){
+        hd="head";return["<",hd,"></",hd,"><",i,' onl' + 'oad="var d=',g,";d.getElementsByTagName('head')[0].",j,"(d.",h,"('script')).",k,"='",l,"//",a.l,"'",'"',"></",i,">"].join("")}var i="body",m=d[i];if(!m){
+        return setTimeout(ld,100)}a.P(1);var j="appendChild",h="createElement",k="src",n=d[h]("div"),v=n[j](d[h](z)),b=d[h]("iframe"),g="document",e="domain",o;n.style.display="none";m.insertBefore(n,m.firstChild).id=z;b.frameBorder="0";b.id=z+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){
+        b.src="javascript:false"}b.allowTransparency="true";v[j](b);try{
+        b.contentWindow[g].open()}catch(w){
+        c[e]=d[e];o="javascript:var d="+g+".open();d.domain='"+d.domain+"';";b[k]=o+"void(0);"}try{
+        var t=b.contentWindow[g];t.write(p());t.close()}catch(x){
+        b[k]=o+'d.write("'+p().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}a.P(2)};ld()};nt()})({
+        loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure","extend","declare","identify"]});
+        /* custom configuration goes here (www.olark.com/documentation) */
+        olark.identify('8065-524-10-6754');/*]]>*/</script><noscript><a href="https://www.olark.com/site/8065-524-10-6754/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
+        <!-- end olark code -->
+ 
+        {{{footer.scripts}}}
+        {{{snippet 'footer'}}}
+    </body>
+</html>

@@ -1,0 +1,85 @@
+// =============================================================================
+// TYPE (CSS)
+// =============================================================================
+
+// Stencil type component additions
+// -----------------------------------------------------------------------------
+
+
+body {
+    font-size: $body-fontSize;
+    font-weight: $body-font-weight;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: $header-font-weight;
+    margin-top: $heading-marginTop;
+}
+
+h5,
+h6 {
+    text-transform: $heading-textTransform;
+}
+
+a {
+    transition: $anchor-transition;
+}
+
+cite {
+    line-height: $blockquote-cite-lineHeight;
+    margin: $blockquote-cite-margin;
+}
+
+.page-heading {
+    color: #115740;
+    font-family: 'League Gothic', sans-serif;
+    font-size: 32px; // $h1-font-size;
+    margin: spacing("single") 0 spacing("half");
+//    margin: 0 0 spacing("double");
+    text-align: center;
+
+    @include breakpoint("small") {
+      font-size: 36px;
+      margin: spacing("single") 0 spacing("single");
+      text-align: center;
+    }
+    @include breakpoint("medium") {
+      font-size: 42px;
+      margin: spacing("double") 0 spacing("double");
+    }
+    @include breakpoint("large") {
+      font-size: 48px;
+    }
+
+    &.cat-heading {
+      float: none;
+      font-size: 36px;
+      margin: 0;
+      
+      @include breakpoint("small") {
+        float: left;
+      }
+
+    }
+}
+
+
+.definitionList {
+    @include clearfix;
+}
+
+.definitionList-key {
+    color: #54565b;  //stencilColor("color-textSecondary");
+    float: left;
+    font-weight: fontWeight("normal");
+    margin: 0 spacing("quarter") 0 0;
+}
+
+.definitionList-value {
+    margin: 0;
+}

@@ -1,0 +1,160 @@
+
+<div class="container">
+  <div class="main full">
+    <div class="tagtray">
+      <h2 class="page-heading">#AvidMax<!--  <a href="/how-to-hashtag/">(Learn How)</a> --></h2>
+      <div class="tagtray-gallery xs-cols-2 md-cols-4 lg-cols-4" data-gallery-code="1438276732" data-page-size="32" data-max-num-pages="1"></div> 
+    </div>
+  </div>
+</div>
+
+
+<footer class="footer" role="contentinfo">
+    <div class="container">
+        <section class="footer-info">
+            <article class="footer-info-col footer-info-col--medium" data-section-type="storeInfo">
+                <h5 class="footer-info-heading"><a href="tel:+18664545523">866-454-5523</a></h5>
+                
+                <div class="footer-calling-times">
+                  <span>Call Us During These Hours:</span><br/>
+                  <span>M-F 8-5 MST</span><br/>
+                  <span>&nbsp;</span><br/>
+                  <span>&nbsp;</span>
+                </div>
+            </article>
+            
+            <article class="footer-info-col footer-info-col--medium" data-section-type="storeChatInfo">
+                <h5 class="footer-info-heading">Chat With Us</h5>
+                
+                <div class="footer-calling-times">
+                  <span id="chat-online">Chat Online During These Hours:</span><br/>
+                  <span>M-F 8-5 MST</span><br/>
+                  <span>&nbsp;</span><br/>
+                  <span>&nbsp;</span>
+                </div>
+            </article>
+
+            <article class="footer-info-col footer-info-col--medium" data-section-type="storeChatInfo">
+                <h5 class="footer-info-heading">Track Your Order</h5>
+                
+                <div class="footer-info-list">
+                  <span>Use your order tracking</span><br/>
+                  <span>number to check on your recent</span><br/>
+                  <span>order(s) by visiting:</span><br/>
+                  <span><strong><a href="/account.php?action=order_status">www.avidmax.com/track</a></strong></span>
+                </div>
+            </article>
+
+            <article class="footer-info-col footer-info-col--medium" data-section-type="storeChatInfo">
+                <h5 class="footer-info-heading">FAQ</h5>
+                
+                <div class="footer-info-list">
+                  <span>Find answers to some of our</span><br/>
+                  <span>frequently-asked questions</span><br/>
+                  <span>by visiting:</span><br/>
+                  <span><strong><a href="/faq">www.avidmax.com/faq</a></strong></span>
+                </div>
+            </article>
+        </section>
+    </div>
+</footer>
+
+<footer class="footer" role="contentinfo">
+
+    <div class="footer-part2">
+        <section class="footer-info-zzz">
+            <article class="footer-info-col footer-info-col--medium2" data-section-type="storeInfo">
+                
+              <div class="store-logo">    
+                {{#if template_file '===' 'pages/home'}}
+                  <h1 class="footer-logo footer-logo--{{theme_settings.logo-position}}">
+                  {{> components/common/store-logo}}
+                  </h1>
+                {{else}}
+                  <div class="footer-logo header-logo--{{theme_settings.logo-position}}">
+                    {{> components/common/store-logo}}
+                  </div>
+                {{/if}}
+                <h5 class="footer-info-heading phone-number"><a href="tel:+18664545523">866-454-5523</a></h5>
+                <address>{{nl2br settings.address}}</address>
+                
+              </div>
+            </article>
+            
+            <article class="footer-info-col footer-info-col--medium2b" data-section-type="storeAbout">
+                <h5 class="footer-info-heading">About</h5>
+                
+                <ul class="footer-info-list">
+                    <li><a href="/about-avidmax/">About Us/Careers</a></li>
+                    <li><a href="/retail-store/">Retail Store</a></li>
+                    <li><a href="/affiliate-program/">Affiliate Program</a></li>
+                    <li><a href="/sustainability/">Sustainability</a></li>
+                </ul>
+            </article>
+            
+            <article class="footer-info-col footer-info-col--medium2b" data-section-type="storeCustomerService">
+                <h5 class="footer-info-heading">Customer Service</h5>
+                
+                <ul class="footer-info-list">
+                    <li><a href="/account.php?action=order_status">Order Status</a></li>
+                    <li><a href="/returns-exchanges/">Shipping & Returns</a></li>
+                    <li><a href="/contact-avidmax/">Contact Us</a></li>
+                    <li><a href="/faq">FAQ</a></li>
+                    <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                    <li><a href="/coupon-help/">Coupon Help</a></li>
+                </ul>
+            </article>
+            
+            <article class="footer-info-col footer-info-col--medium2b" data-section-type="storeCustomerService">
+                <h5 class="footer-info-heading">Customer Benefits</h5>
+                
+                <ul class="footer-info-list">
+                    <li><a href="/avidmax-rewards-info">AvidMax Rewards</a></li>
+                    <li><a href="/low-price-guarantee/">Low Price Guarantee</a></li>
+                    <li><a href="/giftcertificates.php">Gift Certificates</a></li>
+                    <li><a href="/special-orders/">Special Orders</a></li>
+                    <li><a href="/sweet-avidmax-sticker">Stickers</a></li>
+                </ul>
+            </article>
+            
+            <article class="footer-info-col footer-info-col--medium2b" data-section-type="storeCustomerService">
+                <h5 class="footer-info-heading">Resources</h5>
+                
+                <ul class="footer-info-list">
+                    <li><a href="http://blog.avidmax.com/" target="_blank">AvidMax Blog</a></li>
+                    <li><a href="https://blog.avidmax.com/category/events/">Events</a></li>
+                    <li><a href="/sitemap/">Site Map</a></li>
+                </ul>
+            </article>
+
+            <article class="footer-info-col footer-info-col--medium2c" data-section-type="newsletterSubscription">
+                <h5 class="footer-info-heading">Follow Us</h5>
+                {{> components/common/social-links}}
+
+
+                <div class="footer-info-list">
+                {{#if settings.show_newsletter_box}}
+                    {{> components/common/subscription-form}}
+                {{/if}}
+                {{> components/common/payment-icons}}
+                </div>
+            </article>
+            
+            
+        </section>
+    </div>    
+    
+    <div class="footer-part3">
+        {{#if theme_settings.show_copyright_footer}}
+            <div class="footer-copyright">
+                <p class="powered-by">&copy; <span id="copyright_year"></span> {{settings.store_name}} </p>
+            </div>
+            <script type="text/javascript">
+                document.getElementById("copyright_year").innerHTML = new Date().getFullYear();
+            </script>
+        {{/if}}
+    </div>
+    
+    <div class="back-to-top" onclick="window.scrollTo(0,0);"></div>
+
+</footer>

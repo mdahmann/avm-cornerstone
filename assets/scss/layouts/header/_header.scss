@@ -1,0 +1,452 @@
+// =============================================================================
+// HEADER (CSS)
+//
+// 1. Setting font size of header-logo to 0, since wrapper element may vary, and
+//    inline-block whitespace messes with header height. Font-size is reset to
+//    appropriate size on header-logo-text.
+// 2. Needs left/right margin so it doesn't cover left/right nav bar toggles
+// 3. Offset the letter-spacing on the last character by adding a right negative
+//    margin. This centers the text logo properly.
+// 4. When the word "cart" is added to the mobile header's cart link, add more
+//    margin to compensate.
+//
+// -----------------------------------------------------------------------------
+
+.header {
+    background-color: $header-bg;
+    border-bottom: container("border");
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: zIndex("low");
+
+    @include breakpoint("medium") {
+        border-bottom: container("border");
+        overflow: visible;
+        position: relative;
+    }
+
+    &.is-open {
+        height: 100%;
+        
+        .store-logo {
+          margin: 0 auto;
+        }
+        .store-cart {
+          display: none;
+        }
+
+        @include breakpoint("medium") {
+            height: auto;
+        }
+        
+        .navPages-quickSearch.mobile-search {
+          display: none;
+        }
+
+
+
+        .header-wrapper {
+          .store-logo {
+            width: 90%;
+
+            @media (min-width: 375px) {
+              width: 78%;
+            }
+            @media (min-width: 425px) {
+              width: 70%;
+            }
+            @include breakpoint("small") {
+              width: 50%;
+            }
+            @include breakpoint("medium") {
+              width: 19%;
+            }
+            
+            .header-logo {
+              @media (max-width: 800px) {
+                margin: 0 auto;
+              }
+            }
+          }
+        }
+        
+        
+        
+        
+    }
+}
+
+.header-logo, .footer-logo {
+    font-size: 0;   // 1
+    margin: 0 remCalc($header-toggle-width); // 2
+    text-align: right;
+    
+    width: 145px;
+
+    @include breakpoint("small") { // 4
+        margin-left: auto; // remCalc($header-toggle-width * 1.5);
+        margin-right: 0; // remCalc($header-toggle-width * 1.5);
+        text-align: right; //center;
+        //width: 175px;
+    }
+
+    @include breakpoint("medium") {
+//        margin: (spacing("double") + spacing("base")) auto (spacing("double") + spacing("single"));
+//        margin: (spacing("single")) auto (spacing("single") + spacing("base"));
+        margin: (spacing("single")) auto (spacing("single"));
+        padding: 0;
+        width: auto;
+
+        .header.fixed & {
+            background-color: color("greys", "lightest");
+            margin: 0;
+            padding: spacing("quarter") 0;
+            position: absolute;
+            top: 0;
+            width: 67%; // 100%;
+        }
+    }
+
+    > a {
+        @include clearfix;
+        color: $storeName-color;
+        display: inline-block;
+        padding: 7px 0;
+        position: relative;
+        text-decoration: none;
+        width: 80%;
+        z-index: zIndex("low");
+
+        @include breakpoint("small") {
+          //padding: 0; // $header-logo-paddingVertical 0;
+          width: 68%; // 100%;
+        }
+
+        // scss-lint:disable NestingDepth
+        @include breakpoint("medium") {
+            background: none;
+            border-bottom: 0;
+            display: inline;
+            padding: 0;
+            width: 100%;
+        }
+
+        &:hover {
+            color: color("link", "hover");
+        }
+
+        &:active {
+            color: color("link", "active");
+        }
+    }
+}
+
+h1.footer-logo {
+  margin: 0 auto;
+  text-align: center;
+  width: 200px;
+    @include breakpoint("small") {
+      margin: 0;
+      text-align: left;
+    }
+    @include breakpoint("small") {
+      width: 150px;
+    }
+    @include breakpoint("large") {
+      width: 200px;
+    }
+}
+
+.header-logo--left {
+    text-align: left;
+
+    @include breakpoint("medium") {
+        margin-left: remCalc(40px);
+    }
+}
+
+.header-logo--right {
+    text-align: right;
+
+    @include breakpoint("medium") {
+        margin-right: remCalc(40px);
+    }
+}
+
+.header-logo-text {
+    display: block;
+    font-family: $fontFamily-hero;
+    font-size: fontSize("small");   // 1
+    font-weight: stencilFontWeight("logo-font");
+    letter-spacing: remCalc(5px);
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    padding: remCalc(3px) 0;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    @include breakpoint("small") {
+        font-size: fontSize("large");
+        letter-spacing: remCalc(9px);
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+
+    @include breakpoint("medium") {
+        display: inline;
+        font-size: fontSize("largest");
+        margin-left: 0;
+        margin-right: -(remCalc(9px)); // 3
+        max-width: none;
+        overflow: auto;
+        white-space: normal;
+
+        .header.fixed & {
+            font-size: fontSize("larger");
+        }
+    }
+}
+
+.header-logo-image {
+//    max-height: remCalc($header-height) - $header-logo-marginVertical * 2;
+    max-height: 75px;
+
+    @include breakpoint("medium") {
+//        max-height: none;
+    }
+}
+
+
+/* ++ Intergonic BC */
+.header-promo {
+  background: #115740;                // config.json
+  font-size: 12px;
+  padding: 5px 0;
+  //width: 100%;
+  text-align: center;
+
+  @include breakpoint("small") {
+    font-size: 14px;
+  }
+
+  a {
+    color: #ffffff;                   // config.json
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+}
+
+.header-wrapper {
+  display: flex;
+  
+  @include breakpoint("small") {
+    display: flex;
+  }
+
+
+  .store-logo {
+    margin: 0 auto;
+    width: 57%;
+    
+    @media (min-width: 375px) {
+      width: 50%;
+    }
+    @media (min-width: 425px) {
+      width: 41%;
+    }
+    
+    @include breakpoint("small") {
+      margin: 0;
+      width: 63%; // 50%;
+    }
+    @media (min-width: 680px) {
+      width: 60%;
+    }
+    @include breakpoint("medium") {
+      width: 19%;
+    }
+  }
+  .header-center {
+    width: 0%;
+    
+    @include breakpoint("small") {
+      padding-top: 22px;
+      width: 0%; // 64%;
+    }
+    @include breakpoint("medium") {
+      width: 64%;
+    }
+
+    ul.navPages-list {
+      margin-top: 85px;
+//      max-height: 45px;
+      overflow: hidden;
+      
+      @include breakpoint("small") {
+//        margin-top: 0;
+      }
+      @include breakpoint("medium") {
+        margin-top: 0;
+        max-height: 45px;
+      }
+      
+    }
+  }
+  .store-cart {
+    width: 28%;
+
+    @include breakpoint("small") {
+      width: 37%; // 50%;
+    }
+    @media (min-width: 680px) {
+      width: 40%;
+    }
+    @include breakpoint("medium") {
+      width: 17%;
+    }
+
+    .btn-cart {
+      background: #ffffff;                // config.json
+      font-family: 'League Gothic', sans-serif;
+//      width: 140px;
+
+      margin: 0;   // 0 remCalc($header-toggle-width); // 2
+
+      @include breakpoint("small") { // 4
+        background: #babc18;                // config.json
+        margin-left: auto;      // remCalc($header-toggle-width * 1.5);
+        margin-right: 0; // 50px;     // remCalc($header-toggle-width * 1.5);
+        width: 140px;
+      }
+      @include breakpoint("medium") {
+//        margin: (spacing("double") + spacing("base")) auto (spacing("single"));
+        margin: (spacing("single")) 15px (spacing("single")) 25px;  //(spacing("single") + spacing("base")) auto (spacing("single"));
+      }
+      @include breakpoint("large") {
+        margin: (spacing("base")) auto (spacing("single")) 25px;  //(spacing("single") + spacing("base")) auto (spacing("single"));
+//        margin: (spacing("single")) auto (spacing("single")) 25px;  //(spacing("single") + spacing("base")) auto (spacing("single"));
+        width: 170px;
+      }
+
+      a {
+        color: #babc18;                   // config.json
+        padding: 10px 5px;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        
+        @include breakpoint("small") {
+            color: #ffffff;                   // config.json
+        }
+        @include breakpoint("large") {
+            padding: 10px 20px;
+        }
+        
+        .not-mobile {
+          display: none;
+          @include breakpoint("small") {
+            display: inline-block;
+          }
+        }
+        .on-mobile {
+          display: inline-block;
+          @include breakpoint("small") {
+            display: none;
+          }
+        }
+      }
+      .previewCart {
+        a {
+          color: #ffffff;
+          font-size: 22px;
+          line-height: 24px;
+          @include breakpoint("small") {
+            font-size: 24px;
+            line-height: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+/* -- Intergonic BC */
+
+
+//
+// Mobile Menu Toggle
+//
+// 1. Animate lines from 'x' to hamburger
+// -----------------------------------------------------------------------------
+
+.mobileMenu-toggle {
+    @include square($header-toggle-width);
+    display: inline-block;
+    font-size: 0;
+    left: 0;
+    overflow: hidden;
+    padding: 0 remCalc(18);
+    position: absolute;
+    top: 27px;
+    z-index: zIndex("high");
+
+    @include breakpoint("small") {
+      top: 33px;
+    }
+    @include breakpoint("medium") {
+        display: none;
+    }
+
+    .mobileMenu-toggleIcon,
+    .mobileMenu-toggleIcon::before,
+    .mobileMenu-toggleIcon::after {
+        background: $header-font-color;
+        content: "";
+        display: block;
+        height: 2px;
+        position: absolute;
+        transform: rotate(0deg);
+        transition: transform 100ms ease-in, top 100ms ease-in 150ms, bottom 100ms ease-in 150ms; // 1
+        width: remCalc(20);
+    }
+
+    .mobileMenu-toggleIcon {
+        top: remCalc(27);
+        transition: background-color 10ms ease-in 100ms;
+    }
+
+    .mobileMenu-toggleIcon::before {
+        top: -0.5rem;
+    }
+
+    .mobileMenu-toggleIcon::after {
+        bottom: -0.5rem;
+    }
+
+    &.is-open .mobileMenu-toggleIcon {
+        background-color: transparent;
+        transition-delay: 100ms;
+
+        // scss-lint:disable NestingDepth
+        &::before,
+        &::after {
+            background-color: $header-font-color;
+            bottom: auto;
+            top: auto;
+            transition: transform 100ms ease-in 150ms, top 100ms ease-in, bottom 100ms ease-in; // Animate lines from hamburger to 'x'
+        }
+
+        &::before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+
+        &::after {
+            bottom: 0;
+            transform: rotate(-45deg);
+        }
+
+    }
+}
