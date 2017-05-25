@@ -104,17 +104,19 @@
 .productView-title {
     color: #125840;
     font-family: 'League Gothic', sans-serif;
-    
-    font-size: fontSize("small");
+
+    font-size: 34px;
+    line-height: 1.2em;
 //    margin: -(spacing("half")) 0 spacing("quarter");
     margin: -(spacing("half")) 0 spacing("single");
 
     @include breakpoint("medium") {
         margin-top: spacing("single");
+        font-size: fontSize("larger");
+
     }
 
     @include breakpoint("large") {
-        font-size: fontSize("larger");
     }
 }
 
@@ -145,12 +147,12 @@
     font-weight: bold;
     margin: 10px 0 0 auto;
     text-align: left;
-    
+
     @include breakpoint("small") {
       clear: none;
       text-align: right;
     }
-    
+
     a {
       text-decoration: none;
     }
@@ -164,7 +166,7 @@
 
 .productView-price {
     color: #54565B;
-    font-size: 32px; //fontSize("smaller");
+    font-size: 24px; //fontSize("smaller");
     margin-bottom: spacing("third");
 
     @include breakpoint("medium") {
@@ -181,7 +183,7 @@
         color: inherit;
         font-size: inherit;
     }
-    
+
     .price-section--saving {
       line-height: 18px;
       padding: 25px 0;
@@ -384,7 +386,7 @@
 
         }
     }
-    
+
     .product-wishlist {
       border: none;
       border-bottom: 1px solid #125840;
