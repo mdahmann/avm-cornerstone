@@ -5,12 +5,7 @@
 
 // Product view layout
 // -----------------------------------------------------------------------------
-.product-video-wrapper {
-  @media (max-width: 1026px) {
-   display:none
-  }
 
-}
 .productView {
     @include grid-row($behavior: "nest");
     margin-left: spacing("base");

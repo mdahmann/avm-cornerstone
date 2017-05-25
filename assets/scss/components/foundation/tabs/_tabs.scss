@@ -74,7 +74,12 @@
   float: right;
   padding-left: 25px;
   width: 45%;
-  
+  @media (max-width: 1026px) {
+   width: 100%;
+   float:none;
+   padding-left: 0px;
+  }
+
   section.toggle {
     border: none;
     h4 {
