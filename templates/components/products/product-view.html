@@ -135,9 +135,9 @@
                                     {{#if type '===' 'fixed'}}
                                         {{lang 'products.bulk_pricing.fixed' discount=discount.formatted}}
                                     {{/if}}
-                                    {{#if type '===' 'price'}}
+                                    <!-- {{#if type '===' 'price'}}
                                         {{lang 'products.bulk_pricing.price' discount=discount.formatted}}
-                                    {{/if}}
+                                    {{/if}} -->
                                 </li>
                             {{/each}}
                             </ul>
@@ -281,7 +281,7 @@
                 {{{snippet 'product_description'}}}
             </div>
            {{#if product.warranty}}
-<!-- 
+<!--
                <div class="tab-content" id="tab-warranty">
                    {{{product.warranty}}}
                </div>
