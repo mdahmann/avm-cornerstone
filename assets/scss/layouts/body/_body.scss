@@ -176,7 +176,7 @@
   width: 25%;
 }
 #b1 {
-  background-image: url(../img/img-b1-001-2800.jpg);
+  // background-image: url(../img/img-b1-001-2800.jpg);
 //  background-image: url(stencilImage('optimizedCheckout-backgroundImage', 'optimizedCheckout-backgroundImage-size'));
   border-left: none;
   border-right: none;
@@ -216,7 +216,6 @@
   }
 }
 #b2 {
-  background-image: url(../img/img-b2-002-1920.jpg);
   border-left: none;
   border-right: none;
   .main {
@@ -258,7 +257,6 @@
   }
 }
 #b3 {
-  background-image: url(../img/img-b3-001-2800.jpg);
   border-left: none;
   border-right: none;
   .main {
@@ -304,7 +302,6 @@
   }
 }
 #h1 {
-  background-image: linear-gradient(0deg,rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(../img/img-h1-001-1920.jpg);
   border-left: none;
   border-right: none;
 }
@@ -327,17 +324,14 @@
   }
 }
 #q2 {
-  background-image: linear-gradient(0deg,rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(../img/img-q2-001-1200.jpg);
   border-left: none;
 }
 #q3 {
-  background-image: linear-gradient(0deg,rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(../img/img-q3-001-1200.jpg);
   border-left: none;
   border-right: none;
 }
 #q4 {
   background-color: #292929;
-  background-image: url(../img/img-q4-001-1200.jpg);
   background-size: 90%;
   border-right: none;
   cursor: pointer;

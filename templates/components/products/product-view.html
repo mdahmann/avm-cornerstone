@@ -11,7 +11,7 @@
     <section class="productView-details">
         <div class="productView-product">
             <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
-<!-- 
+<!--
             <h2 class="productView-brand"{{#if schema}} itemprop="brand" itemscope itemtype="http://schema.org/Brand"{{/if}}>
                 <a href="{{product.brand.url}}"{{#if schema}} itemprop="url"{{/if}}><span{{#if schema}} itemprop="name"{{/if}}>{{product.brand.name}}</span></a>
             </h2>
@@ -60,7 +60,7 @@
             </div>
             {{product.detail_messages}}
             <dl class="productView-info">
-<!-- 
+<!--
                 {{#if product.sku}}
                     <dt class="productView-info-name">{{lang 'products.sku'}}</dt>
                     <dd class="productView-info-value" data-product-sku>{{product.sku}}</dd>
@@ -255,7 +255,7 @@
             <a href="{{product.brand.url}}"{{#if schema}} itemprop="url"{{/if}}>All <span{{#if schema}} itemprop="name"{{/if}}>{{product.brand.name}}</span> Products</a> <span class="navigate">></span>
             </div>
         </div>
-<!-- 
+<!--
         <span> > components/common/share</span>
  -->
         {{{snippet 'product_details'}}}
@@ -267,7 +267,7 @@
                 <a class="tab-title" href="#tab-description">{{lang 'products.description'}}</a>
             </li>
             {{#if product.warranty}}
-<!-- 
+<!--
                 <li class="tab">
                     <a class="tab-title" href="#tab-warranty">{{lang 'products.warranty'}}</a>
                 </li>
@@ -276,7 +276,7 @@
         </ul>
         <div class="tabs-contents">
             <div class="tab-content is-active" id="tab-description">
-                <div id="video-wrapper"></div>
+                <div id="video-wrapper" class="product-video-wrapper"></div>
                 {{{product.description}}}
                 {{{snippet 'product_description'}}}
             </div>
@@ -288,22 +288,22 @@
  -->
            {{/if}}
         </div>
-        
-        
+
+
         {{#if product.warranty}}
         <ul class="tabs" data-tab>
                 <li class="tab">
                     <a class="tab-title" href="#tab-warranty">{{lang 'products.warranty'}}</a>
                 </li>
-        </ul>        
+        </ul>
         <div class="tabs-contents">
                <div class="tab-content" id="tab-warranty">
                    {{{product.warranty}}}
                </div>
         </div>
         {{/if}}
-        
-        
+
+
     </article>
 </div>
 

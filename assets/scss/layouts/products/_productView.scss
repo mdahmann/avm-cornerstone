@@ -5,12 +5,17 @@
 
 // Product view layout
 // -----------------------------------------------------------------------------
+.product-video-wrapper {
+  @media (max-width: 1026px) {
+   display:none
+  }
 
+}
 .productView {
     @include grid-row($behavior: "nest");
     margin-left: spacing("base");
     margin-right: spacing("base");
-    
+
     @include breakpoint("small") {
       margin-left: spacing("base");
       margin-right: spacing("base");
@@ -59,7 +64,7 @@
     @include grid-column(12);
     padding-left: spacing("base");
     padding-right: spacing("base");
-    
+
     ul.tabs {
       border-bottom: 2px solid #c8c8c8;
     }
