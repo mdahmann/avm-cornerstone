@@ -84,6 +84,7 @@
     font-weight: 500;
     margin: $card-title-margin;
     text-align: center;
+    line-height: 1.2em;
 
     @include breakpoint("medium") {
       font-size: 20px; // $card-title-fontSize;

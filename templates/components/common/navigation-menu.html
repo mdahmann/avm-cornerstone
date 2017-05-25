@@ -2,7 +2,15 @@
     <div class="navPages-quickSearch">
         {{> components/common/quick-search}}
     </div>
+
     <ul class="navPages-list{{#if theme_settings.navigation_design '!==' 'simple'}} navPages-list-depth-max{{/if}}">
+
+            <div class="save10">
+              <a href="http://www.avidmax.com/newsletter-sign-up">
+            Sign up for email and <span class="">SAVE 10%</span><i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-chevron-down"></use></svg></i>
+              </a>
+          </div>
+
         {{#each categories}}
             <li class="navPages-item">
             {{#if ../theme_settings.navigation_design '===' 'simple'}}
