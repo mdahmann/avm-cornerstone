@@ -108,6 +108,7 @@
           $('.video-play').click(function() {
         	  $('.playlist')[0].src += "&autoplay=1&rel=0";
             $('.playlist').show();
+            $('#h1 .main2, #h1 .sub, .video-play').fadeOut();
             $('#h1').css('background', '#000000');
           });
 
@@ -125,6 +126,7 @@
           $('#q4').click(function() {
             $('.q4video')[0].src += "?autoplay=1&modestbranding=1&rel=0";
             $('.q4video').show();
+            $('.video-play2').fadeOut();
             $('#q4').css('background', '#000000');
           });
 
